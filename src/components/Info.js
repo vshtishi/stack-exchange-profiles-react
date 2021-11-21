@@ -4,23 +4,46 @@ import styled from 'styled-components';
 import { HiBadgeCheck } from 'react-icons/hi';
 import { GrScorecard } from 'react-icons/gr';
 import { SiMicrostrategy } from 'react-icons/si';
+import { AiFillTags } from 'react-icons/ai';
 
 const UserInfo = () => {
   const { stackExchangeUser } = React.useContext(StackExchangeContext)
-  console.log(stackExchangeUser)
-  const { badge_counts, reputation, accept_rate } = stackExchangeUser
+  const { badge_counts, reputation, accept_rate, collectives } = stackExchangeUser
   const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+  const tags_count = collectives[0].collective.tags.length
+
 
   const badges_sum = sumValues(badge_counts)
   const items = [
     { id: 1, icon: <HiBadgeCheck className="icon" />, label: "badges", value: badges_sum, color: `pink` },
     { id: 2, icon: <GrScorecard className="icon" />, label: "reputation", value: reputation, color: `yellow` },
     { id: 3, icon: <SiMicrostrategy className="icon" />, label: "accept rate", value: accept_rate, color: `purple` },
-    //tags { id: 4, icon: <HiBadgeCheck className="icon" />, label: "tags", value: badges_sum, color: `pink` }
+    { id: 4, icon: <AiFillTags className="icon" />, label: "tags", value: tags_count, color: `green` }
 
   ]
-  return <h2>user info component: </h2>;
+  return (
+    <section className="section">
+      <Wrapper className="section-center">
+        {items.map(item => {
+          return (
+            <Item key={item.id} {...item}></Item>
+          )
+        })}
+      </Wrapper>
+    </section>
+  )
 };
+
+const Item = ({ icon, label, value, color }) => {
+  return (
+    <article className="item">
+      <span className={color}>{icon}</span>
+      <div>
+        <h3>{value}</h3>
+        <p>{label}</p>
+      </div></article>
+  )
+}
 
 const Wrapper = styled.section`
   display: grid;

@@ -12,11 +12,11 @@ const StackExchangeProvider = ({ children }) => {
     const [answers, setAnswers] = useState('')
     
 
-    return <StackExchangeContext.Provider value={
+    return <StackExchangeContext.Provider value={{
         stackExchangeUser,
         questions,
         answers
-    }>
+    }}>
         {children}
     </StackExchangeContext.Provider>
 }
