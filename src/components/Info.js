@@ -1,12 +1,25 @@
 import React from 'react';
 import { StackExchangeContext } from '../context/context';
 import styled from 'styled-components';
-import { GoRepo, GoGist } from 'react-icons/go';
-import { FiUsers, FiUserPlus } from 'react-icons/fi';
+import { HiBadgeCheck } from 'react-icons/hi';
+import { GrScorecard } from 'react-icons/gr';
+import { SiMicrostrategy } from 'react-icons/si';
 
 const UserInfo = () => {
-  const data = React.useContext(StackExchangeContext)
-  return <h2>user info component: {data}</h2>;
+  const { stackExchangeUser } = React.useContext(StackExchangeContext)
+  console.log(stackExchangeUser)
+  const { badge_counts, reputation, accept_rate } = stackExchangeUser
+  const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+
+  const badges_sum = sumValues(badge_counts)
+  const items = [
+    { id: 1, icon: <HiBadgeCheck className="icon" />, label: "badges", value: badges_sum, color: `pink` },
+    { id: 2, icon: <GrScorecard className="icon" />, label: "reputation", value: reputation, color: `yellow` },
+    { id: 3, icon: <SiMicrostrategy className="icon" />, label: "accept rate", value: accept_rate, color: `purple` },
+    //tags { id: 4, icon: <HiBadgeCheck className="icon" />, label: "tags", value: badges_sum, color: `pink` }
+
+  ]
+  return <h2>user info component: </h2>;
 };
 
 const Wrapper = styled.section`
