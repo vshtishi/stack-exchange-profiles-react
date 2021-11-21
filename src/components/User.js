@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
-import Followers from './Followers';
+import Followers from './Questions';
 const User = () => {
   return <h2>search component</h2>;
 };
