@@ -1,9 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
-import Followers from './Questions';
+import Questions from './Questions';
 const User = () => {
-  return <h2>search component</h2>;
+  return (
+    <section className="section">
+      <Wrapper className="section-center">
+        <Card></Card>
+        <Questions></Questions>
+      </Wrapper>
+    </section>
+  )
 };
 
 const Wrapper = styled.div`

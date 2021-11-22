@@ -1,10 +1,27 @@
 import React from 'react';
-// import { StackContext } from '../context/context';
+import { StackExchangeContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 const Card = () => {
-  return <h2>card component</h2>;
-};
+  const { stackExchangeUser } = React.useContext(StackExchangeContext)
+  const { display_name, profile_image, link, location } = stackExchangeUser
+  return (
+    <Wrapper>
+      <header>
+        <img src={profile_image} alt={display_name} />
+        <div>
+          <h4>{display_name}</h4>
+        </div>
+        <a href={link}>Profile</a>
+      </header>
+      <div className="links">
+        <p>
+          <MdLocationOn></MdLocationOn> {location || ""}
+        </p>
+      </div>
+    </Wrapper>
+  )
+}
 const Wrapper = styled.article`
   background: var(--clr-white);
   padding: 1.5rem 2rem;

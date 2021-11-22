@@ -2,8 +2,8 @@ import React from 'react';
 import { StackContext } from '../context/context';
 import styled from 'styled-components';
 
-const Followers = () => {
-  return <h2>followers component</h2>;
+const Questions = () => {
+  return <h2>Questions component</h2>;
 };
 
 const Wrapper = styled.article`
@@ -58,4 +58,4 @@ const Wrapper = styled.article`
     }
   }
 `;
-export default Followers;
+export default Questions;
