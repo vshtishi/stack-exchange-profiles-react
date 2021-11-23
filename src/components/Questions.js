@@ -1,9 +1,31 @@
 import React from 'react';
-import { StackContext } from '../context/context';
+import { StackExchangeContext } from '../context/context';
 import styled from 'styled-components';
+import { AiOutlineQuestion} from 'react-icons/ai';
+
 
 const Questions = () => {
-  return <h2>Questions component</h2>;
+  const { questions } = React.useContext(StackExchangeContext)
+  return (
+    <Wrapper>
+      <div className="questions">
+        {questions.items.map((question, index) => {
+          const { link, title } = question;
+          return (
+            <article key={index}>
+              <span className="green">      
+               <AiOutlineQuestion className="icon" />
+              </span>
+              <div>
+                <h4>{title}</h4>
+                <a href={link}>View Question</a>
+              </div>
+            </article>
+          )
+        })}
+      </div>
+    </Wrapper>
+  )
 };
 
 const Wrapper = styled.article`
@@ -14,7 +36,7 @@ const Wrapper = styled.article`
   position: relative;
 
   &::before {
-    content: ' followers';
+    content: ' questions';
     position: absolute;
     top: 0;
     left: 0;
@@ -28,7 +50,21 @@ const Wrapper = styled.article`
     letter-spacing: var(--spacing);
     font-size: 1rem;
   }
-  .followers {
+  span {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+  }
+  .icon {
+    font-size: 1.5rem;
+  }
+  .green {
+    background: var(--clr-primary-10);
+    color: var(--clr-primary-5);
+  }
+  .questions {
     overflow: scroll;
     height: 260px;
     display: grid;
