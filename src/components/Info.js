@@ -5,7 +5,7 @@ import { HiBadgeCheck } from 'react-icons/hi';
 import { GrScorecard } from 'react-icons/gr';
 import { SiMicrostrategy } from 'react-icons/si';
 import { AiFillTags } from 'react-icons/ai';
-
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 const UserInfo = () => {
   const { stackExchangeUser } = React.useContext(StackExchangeContext)
   const { badge_counts, reputation, accept_rate, collectives } = stackExchangeUser
@@ -41,7 +41,8 @@ const Item = ({ icon, label, value, color }) => {
       <div>
         <h3>{value}</h3>
         <p>{label}</p>
-      </div></article>
+      </div>
+    </article>
   )
 }
 

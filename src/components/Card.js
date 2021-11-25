@@ -2,6 +2,7 @@ import React from 'react';
 import { StackExchangeContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 const Card = () => {
   const { stackExchangeUser } = React.useContext(StackExchangeContext)
   const { display_name, profile_image, link, location } = stackExchangeUser
@@ -19,6 +20,12 @@ const Card = () => {
           <MdLocationOn></MdLocationOn> {location || ""}
         </p>
       </div>
+      <MapContainer center={[45.4, -75.7]} zoom={12}scrollWheelZoom={false}>
+      <TileLayer
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
+    </MapContainer>
     </Wrapper>
   )
 }
@@ -78,6 +85,10 @@ const Wrapper = styled.article`
   }
   .bio {
     color: var(--clr-grey-3);
+  }
+  .leaflet-container {
+    width: 100%;
+    height: 100vh;
   }
   .links {
     p,
