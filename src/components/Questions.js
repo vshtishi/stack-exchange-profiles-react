@@ -66,7 +66,7 @@ const Wrapper = styled.article`
   }
   .questions {
     overflow: scroll;
-    height: 260px;
+    height: 570px;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
     gap: 1.25rem 1rem;

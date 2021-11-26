@@ -88,7 +88,7 @@ const Wrapper = styled.article`
   }
   .leaflet-container {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
   }
   .links {
     p,
