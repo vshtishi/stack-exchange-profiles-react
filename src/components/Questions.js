@@ -1,7 +1,7 @@
 import React from 'react';
 import { StackExchangeContext } from '../context/context';
 import styled from 'styled-components';
-import { AiOutlineQuestion} from 'react-icons/ai';
+import { AiOutlineQuestion } from 'react-icons/ai';
 
 
 const Questions = () => {
@@ -13,16 +13,17 @@ const Questions = () => {
           const { link, title } = question;
           return (
             <article key={index}>
-              <span className="green">      
-               <AiOutlineQuestion className="icon" />
+              <span className="green">
+                <AiOutlineQuestion className="icon" />
               </span>
               <div>
-                <h4>{title}</h4>
+                <h4 dangerouslySetInnerHTML={{ __html: title }} />
                 <a href={link}>View Question</a>
               </div>
             </article>
           )
         })}
+        <br/>
       </div>
     </Wrapper>
   )
@@ -68,7 +69,7 @@ const Wrapper = styled.article`
     overflow: scroll;
     height: 570px;
     display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
     gap: 1.25rem 1rem;
     padding: 1rem 2rem;
   }
@@ -87,10 +88,25 @@ const Wrapper = styled.article`
       object-fit: cover;
     }
     h4 {
-      margin-bottom: 0;
+      margin-bottom: 10px;
+      margin-top: 10px;
     }
     a {
-      color: var(--clr-grey-5);
+        color: var(--clr-primary-5);
+        border: 1px solid var(--clr-primary-5);
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        text-transform: capitalize;
+        -webkit-letter-spacing: var(--spacing);
+        -moz-letter-spacing: var(--spacing);
+        -ms-letter-spacing: var(--spacing);
+        letter-spacing: var(--spacing);
+        -webkit-transition: var(--transition);
+        transition: var(--transition);
+        cursor: pointer;
+        &:hover {
+          background: var(--clr-primary-5);
+          color: var(--clr-white);        }
     }
   }
 `;
