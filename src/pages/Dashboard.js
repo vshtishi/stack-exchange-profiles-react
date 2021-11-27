@@ -1,5 +1,5 @@
 import React from 'react';
-import { Info, Repos, User, Search, Navbar } from '../components';
+import { Info, Answers, User, Search, Navbar } from '../components';
 import loadingImage from '../images/preloader.gif';
 // import { StackExchangeContext } from '../context/context';
 const Dashboard = () => {
@@ -9,6 +9,7 @@ const Dashboard = () => {
      {/* <Search /> */}
      <Info />
      <User />
+     <Answers />
     </main>
   );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GithubContext } from '../context/context';
-// import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
-const Repos = () => {
-  return <h2>repos component</h2>;
+import { StackExchangeContext } from '../context/context';
+import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
+const Answers = () => {
+  return <ExampleChart />
 };
 
 const Wrapper = styled.div`
@@ -30,4 +30,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default Repos;
+export default Answers;
