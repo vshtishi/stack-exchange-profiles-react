@@ -28,7 +28,7 @@ const ChartComponent = ({ data }) => {
       chart: {
         caption: 'Accepted Answers',
         theme: 'fusion',
-        pieRadius: '50%',
+        pieRadius: '37%',
         paletteColors: '#66E9F0, #F0EC66',
       },
       // Chart Data

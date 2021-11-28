@@ -3,21 +3,37 @@ import styled from 'styled-components'
 import { StackExchangeContext } from '../context/context'
 import { Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts'
 const Answers = () => {
-  const chartData = [
-    {
-      label: 'Accepted',
-      value: '290',
-    },
-    {
-      label: 'Not Accepted',
-      value: '260',
-    },
-  ]
+  const { answers } = React.useContext(StackExchangeContext)
+  let acceptedAnswers = answers.items.reduce((total, item) => {
+    const { is_accepted } = item
+    console.log(is_accepted)
+    if (is_accepted) {
+      if (!('isAccepted' in total)) {
+        total['isAccepted'] = { label: 'Accepted', value: 1 }
+      } else {
+        total['isAccepted'] = {
+          ...total['isAccepted'],
+          value: total['isAccepted'].value + 1,
+        }
+      }
+    } else {
+      if (!('notAccepted' in total)) {
+        total['notAccepted'] = { label: 'Not Accepted', value: 1 }
+      } else {
+        total['notAccepted'] = {
+          ...total['notAccepted'],
+          value: total['notAccepted'].value + 1,
+        }
+      }
+    }
+    return total
+  }, {})
 
+  acceptedAnswers = Object.values(acceptedAnswers)
   return (
     <section className='section'>
       <Wrapper className='section-center'>
-        <Pie3D data={chartData} />
+        <Pie3D data={acceptedAnswers} />
       </Wrapper>
     </section>
   )
