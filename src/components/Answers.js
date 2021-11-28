@@ -1,10 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
-import { StackExchangeContext } from '../context/context';
-import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
+import React from 'react'
+import styled from 'styled-components'
+import { StackExchangeContext } from '../context/context'
+import { Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts'
 const Answers = () => {
-  return <ExampleChart />
-};
+  const chartData = [
+    {
+      label: 'Accepted',
+      value: '290',
+    },
+    {
+      label: 'Not Accepted',
+      value: '260',
+    },
+  ]
+
+  return (
+    <section className='section'>
+      <Wrapper className='section-center'>
+        <Pie3D data={chartData} />
+      </Wrapper>
+    </section>
+  )
+}
 
 const Wrapper = styled.div`
   display: grid;
@@ -28,6 +45,6 @@ const Wrapper = styled.div`
     width: 100% !important;
     border-radius: var(--radius) !important;
   }
-`;
+`
 
-export default Answers;
+export default Answers
