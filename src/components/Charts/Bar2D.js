@@ -30,7 +30,7 @@ const ChartComponent = ({ data }) => {
         theme: 'fusion',
         decimals: 0,
         showPercentValues: 0,
-        paletteColors: '#66E9F0, #F0EC66',
+        paletteColors: '#66E9F0, #F0EC66,#F0B066, #72F066, #E6E6FF',
         theme: 'gammel',
       },
       // Chart Data
