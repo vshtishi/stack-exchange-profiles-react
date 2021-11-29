@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StackExchangeContext } from '../context/context'
-import { Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts'
+import { Pie3D, Column3D, Bar2D, Doughnut2D } from './Charts'
 const Answers = () => {
   const { answers } = React.useContext(StackExchangeContext)
   let acceptedAnswers = answers.items.reduce((total, item) => {
     const { is_accepted } = item
-    console.log(is_accepted)
+
     if (is_accepted) {
       if (!('isAccepted' in total)) {
         total['isAccepted'] = { label: 'Accepted', value: 1 }
@@ -30,10 +30,20 @@ const Answers = () => {
   }, {})
 
   acceptedAnswers = Object.values(acceptedAnswers)
+  let answersArray = answers.items.sort((a, b) => b.score - a.score).slice(0, 5)
+
+  //Using temporary label instead of answer link
+  const topAnswers = answersArray.map((item) => ({
+    label: 'temporary',
+    value: item.score,
+    answer_id: item.answer_id,
+  }))
+  console.log(topAnswers)
   return (
     <section className='section'>
       <Wrapper className='section-center'>
         <Pie3D data={acceptedAnswers} />
+        <Bar2D data={topAnswers} />
       </Wrapper>
     </section>
   )
