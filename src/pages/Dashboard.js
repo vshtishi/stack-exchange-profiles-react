@@ -1,5 +1,13 @@
 import React from 'react'
-import { Info, Answers, User, Search, Navbar, Badges } from '../components'
+import {
+  Info,
+  Answers,
+  User,
+  Search,
+  Navbar,
+  Badges,
+  Tags,
+} from '../components'
 import loadingImage from '../images/preloader.gif'
 // import { StackExchangeContext } from '../context/context';
 const Dashboard = () => {
@@ -11,6 +19,7 @@ const Dashboard = () => {
       <User />
       <Answers />
       <Badges />
+      <Tags />
     </main>
   )
 }
