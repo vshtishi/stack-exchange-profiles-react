@@ -48,6 +48,8 @@ const Wrapper = styled.article`
     padding: 0.5rem 1rem 0 1rem;
     letter-spacing: var(--spacing);
     font-size: 1rem;
+    margin-top: 30px;
+    padding-top: 40px;
   }
   span {
     width: 3rem;
@@ -65,7 +67,7 @@ const Wrapper = styled.article`
   }
   .questions {
     overflow: scroll;
-    height: 570px;
+    height: 400px;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
     gap: 1.25rem 1rem;

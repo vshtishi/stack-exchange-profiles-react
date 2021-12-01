@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { StackExchangeContext } from '../context/context'
 import { Doughnut3D } from './Charts'
+import Tags from './Tags'
 const Badges = () => {
   const { stackExchangeUser } = React.useContext(StackExchangeContext)
 
@@ -16,6 +17,7 @@ const Badges = () => {
     <section className='section'>
       <Wrapper className='section-center'>
         <Doughnut3D data={badges} />
+        <Tags />
       </Wrapper>
     </section>
   )
