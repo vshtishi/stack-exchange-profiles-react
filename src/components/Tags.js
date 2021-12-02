@@ -8,7 +8,7 @@ const Tags = () => {
   console.log(stackExchangeUser.collectives[0])
   return (
     <Wrapper>
-      <div className='questions'>
+      <div className='tags'>
         {stackExchangeUser.collectives[0].collective.tags.map((tag, index) => {
           return (
             <article key={index}>
@@ -35,21 +35,21 @@ const Wrapper = styled.article`
   position: relative;
 
   &::before {
-    content: ' questions';
+    content: ' tags';
     position: absolute;
     top: 0;
     left: 0;
     transform: translateY(-100%);
-    background: var(--clr-white);
-    color: var(--clr-grey-5);
+    background: var(--clr-primary-10);
+    color: var(--clr-primary-5);
     border-top-right-radius: var(--radius);
     border-top-left-radius: var(--radius);
     text-transform: capitalize;
-    padding: 0.5rem 1rem 0 1rem;
     letter-spacing: var(--spacing);
-    font-size: 1rem;
-    margin-top: 30px;
-    padding-top: 40px;
+    font-size: 1.2rem;
+    margin-top: 25px;
+    padding-right: 15px;
+    padding-left: 5px;
   }
   span {
     width: 3rem;
@@ -65,22 +65,24 @@ const Wrapper = styled.article`
     background: var(--clr-primary-10);
     color: var(--clr-primary-5);
   }
-  .questions {
+  .tags {
     overflow: scroll;
     height: 400px;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
-    gap: 1.25rem 1rem;
-    padding: 1rem 2rem;
+    gap: 1rem 1rem;
+    padding: 2rem 2rem;
   }
   article {
     transition: var(--transition);
-    padding: 0.15rem 0.5rem;
+    padding: 0.25rem 0.5rem;
     border-radius: var(--radius);
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
     column-gap: 1rem;
+    margin-top: 20px;
+    margin-left: 20px;
     img {
       height: 100%;
       width: 45px;
