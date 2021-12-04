@@ -1,15 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import { MdSearch } from 'react-icons/md'
-import { StackContext } from '../context/context'
+import { StackContext, StackExchangeContext } from '../context/context'
 const Search = () => {
   const [user, setUser] = React.useState('')
+  const { error } = React.useContext(StackExchangeContext)
   const handleSubmit = (e) => {
     e.preventDefault()
   }
   return (
     <section className='section'>
       <Wrapper className='section-center'>
+        {error.show && (
+          <ErrorWrapper>
+            <p>{error.msg}</p>
+          </ErrorWrapper>
+        )}
         <form onSubmit={handleSubmit}>
           <div className='form-control'>
             <MdSearch />
