@@ -5,7 +5,6 @@ import { AiFillTags } from 'react-icons/ai'
 
 const Tags = () => {
   const { stackExchangeUser } = React.useContext(StackExchangeContext)
-  console.log(stackExchangeUser.collectives[0])
   return (
     <Wrapper>
       <div className='tags'>

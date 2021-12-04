@@ -13,7 +13,7 @@ const StackExchangeProvider = ({ children }) => {
   const [stackExchangeUser, setStackExchangeUser] = useState(mockUser)
   const [questions, setQuestions] = useState(mockQuestions)
   const [answers, setAnswers] = useState(mockAnswers)
-
+  const [loading, setLoading] = useState(false)
   return (
     <StackExchangeContext.Provider
       value={{
