@@ -2,11 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { MdSearch } from 'react-icons/md'
 import { StackContext, StackExchangeContext } from '../context/context'
+import axios from 'axios'
 const Search = () => {
   const [user, setUser] = React.useState('')
-  const { error } = React.useContext(StackExchangeContext)
+  const { error, searchStackExchangeUser } =
+    React.useContext(StackExchangeContext)
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    searchStackExchangeUser(user)
   }
   return (
     <section className='section'>

@@ -5,7 +5,8 @@ import mockAnswers from './mockData/mockAnswers'
 
 import axios from 'axios'
 
-const rootUrl = 'https://api.stackexchange.com/2.3/users'
+const rootUrl =
+  'https://api.stackexchange.com/2.3/users?order=desc&sort=reputation&site=stackoverflow'
 
 const StackExchangeContext = React.createContext()
 
@@ -17,8 +18,20 @@ const StackExchangeProvider = ({ children }) => {
 
   const [error, setError] = useState({ show: false, msg: '' })
 
-  function toggleError(show, msg){
-    setError({show, msg})
+  function toggleError(show, msg) {
+    setError({ show, msg })
+  }
+
+  const searchStackExchangeUser = async (user) => {
+    if (user) {
+      const response = await axios(`${rootUrl}&inname=${user}`).catch((err) =>
+        console.log(err)
+      )
+      if (response) {
+        console.log(response.data.items[0])
+        setStackExchangeUser(response.data.items[0])
+      }
+    }
   }
 
   useEffect(() => {
@@ -30,7 +43,8 @@ const StackExchangeProvider = ({ children }) => {
         stackExchangeUser,
         questions,
         answers,
-        error
+        error,
+        searchStackExchangeUser,
       }}
     >
       {children}

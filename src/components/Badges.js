@@ -17,7 +17,7 @@ const Badges = () => {
     <section className='section'>
       <Wrapper className='section-center'>
         <Doughnut3D data={badges} />
-        <Tags />
+        {stackExchangeUser.collectives && <Tags />}
       </Wrapper>
     </section>
   )
