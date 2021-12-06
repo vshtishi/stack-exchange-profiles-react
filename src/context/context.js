@@ -18,18 +18,21 @@ const StackExchangeProvider = ({ children }) => {
 
   const [error, setError] = useState({ show: false, msg: '' })
 
-  function toggleError(show, msg) {
+  function toggleError(show = false, msg = '') {
     setError({ show, msg })
   }
 
   const searchStackExchangeUser = async (user) => {
+    toggleError()
     if (user) {
       const response = await axios(`${rootUrl}&inname=${user}`).catch((err) =>
         console.log(err)
       )
-      if (response) {
+      if (response.data.items.length > 0) {
         console.log(response.data.items[0])
         setStackExchangeUser(response.data.items[0])
+      } else {
+        toggleError(true, 'No user found')
       }
     }
   }
