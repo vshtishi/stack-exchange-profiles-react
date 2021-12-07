@@ -14,7 +14,7 @@ const StackExchangeProvider = ({ children }) => {
   const [stackExchangeUser, setStackExchangeUser] = useState(mockUser)
   const [questions, setQuestions] = useState(mockQuestions)
   const [answers, setAnswers] = useState(mockAnswers)
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const [error, setError] = useState({ show: false, msg: '' })
 
@@ -23,7 +23,8 @@ const StackExchangeProvider = ({ children }) => {
   }
 
   const searchStackExchangeUser = async (user) => {
-    toggleError()
+    toggleError();
+    setIsLoading(true);
     if (user) {
       const response = await axios(`${rootUrl}&inname=${user}`).catch((err) =>
         console.log(err)
@@ -34,6 +35,7 @@ const StackExchangeProvider = ({ children }) => {
       } else {
         toggleError(true, 'No user found')
       }
+      setIsLoading(false);
     }
   }
 
@@ -48,6 +50,7 @@ const StackExchangeProvider = ({ children }) => {
         answers,
         error,
         searchStackExchangeUser,
+        isLoading
       }}
     >
       {children}

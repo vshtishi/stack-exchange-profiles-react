@@ -9,8 +9,18 @@ import {
   Tags,
 } from '../components'
 import loadingImage from '../images/preloader.gif'
-// import { StackExchangeContext } from '../context/context';
+import { StackExchangeContext } from '../context/context'
 const Dashboard = () => {
+  const { isLoading } = React.useContext(StackExchangeContext)
+  if (isLoading) {
+    return (
+      <main>
+        <Navbar />
+        <Search />
+        <img src={loadingImage} className='loading-img' alt='loading' />
+      </main>
+    )
+  }
   return (
     <main>
       <Navbar />

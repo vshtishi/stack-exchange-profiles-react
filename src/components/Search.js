@@ -5,7 +5,7 @@ import { StackContext, StackExchangeContext } from '../context/context'
 import axios from 'axios'
 const Search = () => {
   const [user, setUser] = React.useState('')
-  const { error, searchStackExchangeUser } =
+  const { error, searchStackExchangeUser, isLoading } =
     React.useContext(StackExchangeContext)
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,7 +29,7 @@ const Search = () => {
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
-            <button type='submit'>search</button>
+            {!isLoading && <button type='submit'>search</button>}
           </div>
         </form>
       </Wrapper>
