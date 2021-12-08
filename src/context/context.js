@@ -31,14 +31,26 @@ const StackExchangeProvider = ({ children }) => {
       if (response.data.items.length > 0) {
         setStackExchangeUser(response.data.items[0])
         const { user_id } = response.data.items[0]
-        const questionsResponse = await axios(
-          `${rootUrl}/${user_id}/questions?order=desc&sort=activity&site=stackoverflow`
-        ).catch((err) => console.log(err))
-        setQuestions(questionsResponse.data)
-        const answersResponse = await axios(
-          `${rootUrl}/${user_id}/answers?order=desc&sort=activity&site=stackoverflow`
-        )
-        setAnswers(answersResponse.data)
+
+        await Promise.allSettled([
+          axios(
+            `${rootUrl}/${user_id}/questions?order=desc&sort=activity&site=stackoverflow`
+          ),
+          axios(
+            `${rootUrl}/${user_id}/answers?order=desc&sort=activity&site=stackoverflow`
+          ),
+        ])
+          .then((results) => {
+            const [questions, answers] = results
+            const status = 'fulfilled'
+            if (questions.status === status) {
+              setQuestions(questions.value.data)
+            }
+            if (answers.status === status) {
+              setAnswers(answers.value.data)
+            }
+          })
+          .catch((err) => console.log(err))
       } else {
         toggleError(true, 'No user found')
       }
