@@ -6,17 +6,20 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />}
-          exact={true}>
-        </Route>
-        <Route path="/login" element={<Login />}
-        >
-        </Route>
-        <Route path="*" element={<Error />}></Route>
+        <Route
+          path='/'
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+          exact={true}
+        ></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='*' element={<Error />}></Route>
       </Routes>
-
     </Router>
-  );
+  )
 }
 
 export default App;
