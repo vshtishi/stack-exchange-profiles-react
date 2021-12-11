@@ -1,11 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useAuth0 } from '@auth0/auth0-react';
+import React from 'react'
+import styled from 'styled-components'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const Navbar = () => {
+  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
+    useAuth0()
+    console.log(loginWithRedirect)
   return (
     <Wrapper>
-      navbar component
+      <button onClick={loginWithRedirect}>Login</button>
     </Wrapper>
   )
 }
@@ -39,6 +42,6 @@ const Wrapper = styled.nav`
     color: var(--clr-grey-5);
     cursor: pointer;
   }
-`;
+`
 
-export default Navbar;
+export default Navbar
