@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Switch, Route } from 'react-router-dom
 
 function App() {
   return (
+    <AuthWrapper>
     <Router>
       <Routes>
         <Route
@@ -19,6 +20,7 @@ function App() {
         <Route path='*' element={<Error />}></Route>
       </Routes>
     </Router>
+    </AuthWrapper>
   )
 }
 

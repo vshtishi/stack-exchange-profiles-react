@@ -24,7 +24,7 @@ const Navbar = () => {
           logout
         </button>
       ) : (
-        <button onClick={loginWithRedirect}>Login</button>
+        <button onClick={() => loginWithRedirect()}>Login</button>
       )}
     </Wrapper>
   )
